@@ -346,6 +346,10 @@ h3 {
   background: white;
 }
 
+.contact .text-link:hover {
+  color: #b9e0d4;
+}
+
 .contact a:focus-visible {
   outline-color: white;
 }
