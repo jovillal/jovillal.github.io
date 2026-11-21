@@ -6,6 +6,7 @@ A bilingual, responsive portfolio built with semantic HTML and shared CSS. No Ja
 - `es/index.html`: Spanish homepage (`/es/`).
 - `assets/styles.css`: shared layout, typography, and responsive styles.
 - `assets/favicon.svg`: local initials favicon.
+- `assets/cv/`: approved English and Spanish PDF resumes, linked from the corresponding contact sections.
 
 ## Local preview
 
@@ -27,8 +28,10 @@ No build command is required. Relative asset and language links also support a s
 
 ## Content maintenance
 
-Edit the two HTML pages together to keep translations aligned. Project results reflect the supplied brief. The API case study is anonymous; Education Manager is explicitly a prototype. Contact uses only the approved public GitHub profile. No email, LinkedIn URL, private project links, analytics, or contact form is included.
+Edit the two HTML pages together to keep translations aligned. Project results reflect the supplied brief. The API case study is anonymous; Education Manager is explicitly a prototype. Contact includes the approved email, LinkedIn, GitHub, and a language-specific CV download. No private project links, analytics, or contact form is included.
 
-## Future contact links
+## CV downloads
 
-Both pages use a labeled `.contact-links` navigation group that wraps on narrow screens. Add approved LinkedIn and email links and a local downloadable CV to this group in both languages when the actual URLs, address, and CV are approved for publication. Use meaningful translated link labels and the `download` attribute for the local CV. Until then, only the approved GitHub link is rendered; there are no placeholder links or unpublished contact details in the HTML.
+The contact sections use the existing button styling and wrapping `.contact-links` group. English links to `assets/cv/Jorge_Villalobos_CV_Portfolio_EN.pdf`; Spanish links to `../assets/cv/Jorge_Villalobos_CV_Portfolio_ES.pdf`. Relative paths work with both GitHub Pages and the local Python server, including subdirectory previews. The `download` attribute requests a file download.
+
+Keep the approved PDFs unchanged. When replacing them with newly approved versions, retain the filenames and verify both downloads in the local preview. Check the contact sections in both languages at desktop, 375px, and 320px widths.
