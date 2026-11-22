@@ -887,3 +887,55 @@ h3 {
     padding: 24px;
   }
 }
+
+.screenshot-intro {
+  padding-bottom: 40px;
+}
+
+.workflow-screenshot {
+  margin-block: 0 64px;
+}
+
+.workflow-screenshot > a, .project-preview {
+  display: block;
+}
+
+.workflow-screenshot img, .project-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.workflow-screenshot figcaption {
+  margin-top: 20px;
+  color: var(--muted);
+  max-width: 900px;
+}
+
+.workflow-screenshot figcaption span {
+  display: block;
+  margin-top: 8px;
+  font-size: .875rem;
+}
+
+.project-preview {
+  margin-bottom: 20px;
+}
+
+.project-preview img {
+  max-height: 120px;
+  object-fit: contain;
+  background: var(--surface);
+}
+
+@media(min-width:681px) and (max-width:1000px) {
+  .project-preview {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .project:has(.project-preview) .project-footer {
+    grid-row: 5;
+  }
+}
