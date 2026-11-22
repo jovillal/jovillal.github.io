@@ -552,3 +552,99 @@ h3 {
   align-items: center;
   gap: 20px;
 }
+
+.case-back {
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.case-study h1 {
+  max-width: 1000px;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.15;
+}
+
+.case-study .hero-intro {
+  margin-bottom: 0;
+}
+
+.case-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 64px;
+  border-top: 1px solid var(--line);
+}
+
+.case-section .section-copy {
+  max-width: 760px;
+}
+
+.case-section h3 {
+  margin: 28px 0 12px;
+  font-size: 1.2rem;
+}
+
+.case-section ul {
+  padding-left: 24px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.case-section li + li {
+  margin-top: 10px;
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+}
+
+.case-metrics > div {
+  padding: 28px;
+  background: var(--surface);
+  border-top: 3px solid var(--accent);
+}
+
+.case-metrics dt {
+  line-height: 1.4;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.case-metrics strong {
+  display: block;
+  font-size: 1.75rem;
+  letter-spacing: -.025em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.case-metrics dd {
+  margin: 20px 0 0;
+  color: var(--muted);
+}
+
+.case-return {
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media(max-width:1000px) {
+  .case-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+@media(max-width:680px) {
+  .case-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-metrics strong {
+    font-size: 1.5rem;
+  }
+}
