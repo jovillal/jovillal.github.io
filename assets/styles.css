@@ -648,3 +648,67 @@ h3 {
     font-size: 1.5rem;
   }
 }
+
+.architecture {
+  margin: 32px 0;
+}
+
+.architecture figcaption {
+  font-weight: 650;
+  margin-bottom: 20px;
+}
+
+.architecture-flow {
+  max-width: 400px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.architecture-node {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  background: var(--surface);
+  padding: 20px;
+  overflow-wrap: break-word;
+}
+
+.architecture-node strong, .architecture-node span {
+  display: block;
+}
+
+.architecture-node span {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.architecture-connector {
+  color: var(--accent);
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.architecture .architecture-relation {
+  margin: 20px 0;
+  text-align: center;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.architecture-services {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.architecture .architecture-note {
+  margin-top: 24px;
+  font-size: 1rem;
+}
+
+@media(max-width:680px) {
+  .architecture-services {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

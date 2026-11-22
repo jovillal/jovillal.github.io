@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="From an educational communication need to a working AI-assisted prototype: product initiative, technical ownership, document governance, architecture, and lessons learned.">
+  <meta name="color-scheme" content="light">
+  <title>Education Manager: From Educational Need to AI-Assisted Workflow — Jorge Villalobos</title>
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="es" href="../../es/casos/education-manager/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header container">
+    <a class="wordmark" href="../../" aria-label="Jorge Villalobos">JV<span aria-hidden="true">.</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#work">Selected work</a><a href="../../#leadership">Leadership</a><a href="../../#contact">Contact</a></nav>
+    <nav class="language-nav" aria-label="Language"><a href="./" lang="en" hreflang="en" aria-label="English" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="../../es/casos/education-manager/" lang="es" hreflang="es" aria-label="Español">ES</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <article class="case-study" aria-labelledby="case-title">
+      <header class="hero container">
+        <a class="text-link case-back" href="../../">Back to homepage</a>
+        <p class="eyebrow">Case study · Product initiative · Applied AI</p>
+        <h1 id="case-title">Education Manager: From Educational Need to AI-Assisted Workflow</h1>
+        <p class="hero-intro">I connected experience in educational leadership with hands-on software engineering to develop an AI-assisted communication prototype for educators, taking the product concept through the technical evolution of an initial implementation.</p>
+      </header>
+      <section class="case-section section container" aria-labelledby="challenge-title">
+        <h2 id="challenge-title">The Challenge</h2>
+        <div class="section-copy"><p>Teachers frequently need to communicate sensitive information to students’ families. These messages require clear writing, appropriate tone, and alignment with institutional guidelines.</p>
+          <p>Drawing on my experience in educational leadership, I identified an opportunity for an AI-assisted application that could help teachers prepare communications using relevant school documents. The objective was to support teachers’ judgment, not replace it.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="role-title">
+        <h2 id="role-title">My Role</h2>
+        <div class="section-copy"><p>I originated the product concept. A collaborator developed the initial implementation; I subsequently took over the project and worked on its technical evolution.</p>
+          <p>My work included:</p>
+          <ul>
+            <li>Updating software dependencies.</li>
+            <li>Diagnosing and addressing application and service problems.</li>
+            <li>Establishing a functioning connection to a live AI service.</li>
+            <li>Improving the integration between product workflows and technical components.</li>
+            <li>Exploring the product’s commercial potential.</li>
+          </ul></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="architecture-title">
+        <h2 id="architecture-title">Architecture and Technical Decisions</h2>
+        <div class="section-copy"><p>The implemented architecture combines a Next.js frontend for educator and administrator workflows with a Fastify backend API. PostgreSQL and Prisma support persistent application data. Firebase provides authentication and hosting, while backend services are hosted on Google Cloud infrastructure. AI integration sits behind the backend API.</p>
+          <figure class="architecture" aria-labelledby="architecture-caption">
+            <figcaption id="architecture-caption">Conceptual architecture</figcaption>
+            <div class="architecture-flow">
+              <div class="architecture-node"><strong>Educator / Administrator</strong></div>
+              <div class="architecture-connector" aria-hidden="true">↓</div>
+              <div class="architecture-node"><strong>Next.js interface</strong><span>Educator and administrator workflows</span></div>
+              <div class="architecture-connector" aria-hidden="true">↓</div>
+              <div class="architecture-node"><strong>Fastify API</strong><span>Application workflows and AI integration</span></div>
+            </div>
+            <p class="architecture-relation">The API connects to</p>
+            <div class="architecture-services">
+              <div class="architecture-node"><strong>PostgreSQL / Prisma</strong><span>Persistent application data</span></div>
+              <div class="architecture-node"><strong>Institutional documents</strong><span>Sources, versions, and governed retrieval</span></div>
+              <div class="architecture-node"><strong>Backend-connected AI service</strong><span>Draft generation with eligible document context</span></div>
+            </div>
+            <p class="architecture-note">Educators and administrators use the Next.js interface, which communicates with the Fastify API. The API connects application data, governed institutional document retrieval, and the AI service. This diagram shows conceptual relationships, not network topology.</p>
+          </figure>
+          <h3>Institutional sources and bounded retrieval</h3>
+          <p>School administrators can manage institutional document sources and their versions. Educator workflows use eligible active sources, with local, bounded retrieval of eligible passages to provide context during generation.</p>
+          <p>This retrieval is not production semantic search or provider-backed RAG. It provides a limited document context within the prototype’s workflow; it does not establish verified school-policy compliance.</p>
+          <h3>Drafts that remain editable</h3>
+          <p>The workflow supports draft editing, revision history, and source references. These features support teachers as they review and refine communications using the available institutional context.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="results-title">
+        <h2 id="results-title">What We Achieved</h2>
+        <div class="section-copy"><p>The project reached a working, cloud-hosted demonstration with:</p>
+          <ul>
+            <li>Authenticated educator and administrator workflows.</li>
+            <li>Structured communication drafting.</li>
+            <li>Management of institutional source documents.</li>
+            <li>Draft generation and revision history.</li>
+            <li>Live AI integration.</li>
+            <li>Automated tests and deterministic generation paths for repeatable verification.</li>
+          </ul>
+          <p>These are prototype capabilities. Commercial adoption and measurable improvements in teachers’ productivity have not been demonstrated.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="limitations-title">
+        <h2 id="limitations-title">Limitations and Lessons</h2>
+        <div class="section-copy"><p>The application remains a prototype. Live AI integration has had operational limitations involving service availability and restart handling. The complete system is not production-ready.</p>
+          <p>The project illustrates why useful AI software requires workflow design, access controls, institutional document governance, and predictable application behavior, beyond a connection to an LLM.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="perspective-title">
+        <h2 id="perspective-title">Leadership Perspective</h2>
+        <div class="section-copy"><p>Academic leadership helped me identify and understand the educational problem. Software engineering experience helped me translate that problem into an architecture, a working implementation, and concrete technical decisions.</p>
+          <p>The value of this work lies in connecting domain knowledge with hands-on execution: understanding what educators need, taking technical ownership of an existing implementation, and making practical decisions about the prototype’s capabilities and limits.</p></div>
+      </section>
+      <div class="case-return container"><a class="text-link" href="../../">Back to homepage</a></div>
+    </article>
+  </main>
+  <footer class="site-footer container"><span>Jorge Villalobos</span><p>Engineering leadership. Thoughtful architecture.</p><a href="https://github.com/jovillal">GitHub</a></footer>
+</body>
+</html>
