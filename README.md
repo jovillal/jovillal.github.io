@@ -70,3 +70,7 @@ The plot uses the report’s mean fixture-wise paired difference (with minus wit
 This comparison covers 1,520 fixtures across four development folds within the 2010/11–2018/19 training data. It supports retaining the uncorrected model in development, not official validation, predictive success, or profitability. It does not establish independence or universal ineffectiveness of Dixon–Coles. Keep these boundaries when editing either language.
 
 Both graphics use static HTML/CSS, existing palette tokens, and no animation. Include 1440px, 375px, and 320px in visual checks; also check the existing tablet card grid and the evidence section when changing figure styles.
+
+## Education Manager screenshot
+
+`assets/images/education-manager-workflow.png` is the approved, unmodified Spanish-interface screenshot (1587 × 698). Both Education Manager case studies show the complete image after the introduction with localized captions; both homepages reuse it in a height-limited card preview. Every screenshot is a keyboard-accessible link to the same full-resolution PNG. Responsive images include explicit dimensions and lazy loading. Keep image bytes unchanged and verify screenshot loading, keyboard activation, card balance, and overflow at 1440px, 375px, and 320px.
