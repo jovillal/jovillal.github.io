@@ -58,7 +58,7 @@ Preserve attribution of the initial implementation to the collaborator. Describe
 
 The API Reliability case study includes a localized before/after process figure. Its ordered steps are qualitative: they do not encode time, incident counts, or universal enforcement. The existing narrative and metrics are unchanged.
 
-The Football Probability Model card includes a localized paired-difference plot and the two fixture-pooled log losses. Sources are pinned to public commit `ae063d11a599ac23070a15497c38edebd0859d29` in `jovillal/football-probability-model`:
+A full-width section immediately below the project cards contains the Football Probability Model’s localized paired-difference plot and the two fixture-pooled log losses. Each Football card links to this labeled section. Sources are pinned to public commit `ae063d11a599ac23070a15497c38edebd0859d29` in `jovillal/football-probability-model`:
 
 - [Reviewed development narrative](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/docs/development-backtest-conditional-dixon-coles-v1.md).
 - [Authoritative aggregate report](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/reports/development-backtest-conditional-dixon-coles-v1.json), version `development-backtest-conditional-dixon-coles-v1` (Git blob `d68b8a7ae750f58164202690e76d95a352a238dc`).
@@ -69,4 +69,4 @@ The plot uses the report’s mean fixture-wise paired difference (with minus wit
 
 This comparison covers 1,520 fixtures across four development folds within the 2010/11–2018/19 training data. It supports retaining the uncorrected model in development, not official validation, predictive success, or profitability. It does not establish independence or universal ineffectiveness of Dixon–Coles. Keep these boundaries when editing either language.
 
-Both graphics use static HTML/CSS, existing palette tokens, and no animation. Include 1440px, 375px, and 320px in visual checks; also check the existing tablet card grid when changing figure styles.
+Both graphics use static HTML/CSS, existing palette tokens, and no animation. Include 1440px, 375px, and 320px in visual checks; also check the existing tablet card grid and the evidence section when changing figure styles.
