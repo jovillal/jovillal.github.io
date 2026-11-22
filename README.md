@@ -53,3 +53,20 @@ Keep the company anonymous and distinguish shared team standards from progressiv
 The Education Manager cards link to `/case-studies/education-manager/` and `/es/casos/education-manager/`. Both pages reuse the shared case-study layout and include a responsive HTML/CSS architecture diagram with a textual description of its conceptual relationships. Check both pages and homepage round trips at 1440px, 375px, and 320px, including language switching, diagram readability, skip links, visible focus, and all local links and assets.
 
 Preserve attribution of the initial implementation to the collaborator. Describe retrieval as local and bounded, and keep the prototype’s commercial, productivity, policy-compliance, and operational limitations explicit. Do not add private repository or hosted-demo links, credentials, or infrastructure identifiers.
+
+## Evidence-based visuals
+
+The API Reliability case study includes a localized before/after process figure. Its ordered steps are qualitative: they do not encode time, incident counts, or universal enforcement. The existing narrative and metrics are unchanged.
+
+A full-width section immediately below the project cards contains the Football Probability Model’s localized paired-difference plot and the two fixture-pooled log losses. Each Football card links to this labeled section. Sources are pinned to public commit `ae063d11a599ac23070a15497c38edebd0859d29` in `jovillal/football-probability-model`:
+
+- [Reviewed development narrative](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/docs/development-backtest-conditional-dixon-coles-v1.md).
+- [Authoritative aggregate report](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/reports/development-backtest-conditional-dixon-coles-v1.json), version `development-backtest-conditional-dixon-coles-v1` (Git blob `d68b8a7ae750f58164202690e76d95a352a238dc`).
+
+Recorded log loss: uncorrected 180-day exponentially time-weighted Poisson `0.9585391349475223`; conditional Dixon–Coles `0.9608255353548959`. Lower is better. The conditional estimator holds first-stage rates fixed; this is not a claim about every Dixon–Coles model.
+
+The plot uses the report’s mean fixture-wise paired difference (with minus without), `+0.0022864004073735755`, and descriptive two-sided 95% interval `[0.0004920028046178528, 0.004097003049892802]`. The interval is from the recorded operational-week bootstrap: 138 clusters, 10,000 replicates. No experiment or uncertainty estimation was rerun. The symmetric linear axis is `[-0.005, +0.005]`, with zero centered; CSS positions use `50 + value / 0.01 * 100` percent, calculated from full-precision source values. Text displays six decimal places (Spanish uses decimal commas). The line and end caps show the interval; the point shows the paired difference. The same values and interpretation are available as HTML text.
+
+This comparison covers 1,520 fixtures across four development folds within the 2010/11–2018/19 training data. It supports retaining the uncorrected model in development, not official validation, predictive success, or profitability. It does not establish independence or universal ineffectiveness of Dixon–Coles. Keep these boundaries when editing either language.
+
+Both graphics use static HTML/CSS, existing palette tokens, and no animation. Include 1440px, 375px, and 320px in visual checks; also check the existing tablet card grid and the evidence section when changing figure styles.
