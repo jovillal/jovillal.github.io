@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scientific methodology and Python engineering for reproducible football forecasts: chronological evaluation, training-only model selection, and the Phase 6 diagnostic-certification limit.">
+  <meta name="color-scheme" content="light">
+  <title>Football Probability Model: Engineering a Reproducible Forecasting Experiment — Jorge Villalobos</title>
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="es" href="../../es/casos/football-probability-model/">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header container">
+    <a class="wordmark" href="../../" aria-label="Jorge Villalobos">JV<span aria-hidden="true">.</span></a>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../../#about">About</a><a href="../../#work">Selected work</a><a href="../../#leadership">Leadership</a><a href="../../#contact">Contact</a></nav>
+    <nav class="language-nav" aria-label="Language"><a href="./" lang="en" hreflang="en" aria-label="English" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="../../es/casos/football-probability-model/" lang="es" hreflang="es" aria-label="Español">ES</a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <article class="case-study" aria-labelledby="case-title">
+      <header class="hero container">
+        <a class="text-link case-back" href="../../">Back to homepage</a>
+        <p class="eyebrow">Case study · Scientific computing · Python</p>
+        <h1 id="case-title">Football Probability Model: Engineering a Reproducible Forecasting Experiment</h1>
+        <p class="hero-intro">This research project combines scientific methodology with software engineering to make football probability forecasts traceable and testable. Its central discipline is to evaluate a frozen experiment honestly, including when the evidence stops a model from advancing.</p>
+      </header>
+      <section class="case-section section container" aria-labelledby="question-title">
+        <h2 id="question-title">The Research Question</h2>
+        <div class="section-copy"><p>Can a reproducible framework forecast Premier League home-win, draw, and away-win probabilities using only permitted historical match information, and evaluate those probabilities against predefined baselines? The target is the result after 90 minutes plus stoppage time.</p><p>The work prioritizes forecast quality and calibration before any consideration of betting profitability. Match dates, teams, home status, and previous goals are permitted inputs; bookmaker odds, player news, and in-play information are excluded from prediction. The <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/README.md">public project overview</a> and <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/experiment-protocol.md">frozen experiment protocol</a> define the scope.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="design-title">
+        <h2 id="design-title">Experimental Design</h2>
+        <div class="section-copy"><p>Chronology governs the experiment: 2010/11–2023/24 is the training partition, 2024/25 is official validation, 2025/26 is the reserved historical holdout, and eligible remaining 2026/27 fixtures form the planned prospective test. Random splits are prohibited. Holdout and prospective evaluation have not been executed.</p><p>Development uses four expanding-history folds inside training, evaluating 2015/16 through 2018/19: 380 fixtures per fold and 1,520 in total. Historical replay reconstructs what was eligible at each prediction cutoff, 24 elapsed hours before the final-listed kickoff.</p><ul>
+            <li>Models fit at Tuesday 00:00 Europe/London boundaries. Each immutable weekly snapshot includes only results available strictly before that boundary; predictions use the latest snapshot available by their cutoff, without intra-week updates.</li>
+            <li>Historical result availability uses the declared kickoff-plus-three-hours proxy. Static source records contain final-listed kickoffs, not a complete history of schedule announcements; this limits what historical replay can establish.</li>
+            <li>League-frequency, recency-weighted league-frequency, and Elo/Davidson baselines share the chronology and fixture accounting. Log loss and Brier score assess probabilities; accuracy is descriptive. Elo/Davidson is the frozen governing Brier comparator.</li>
+          </ul><p>These <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/experiment-protocol.md#historical-partitions">partition, cutoff, and baseline contracts</a> prevent later outcomes from entering earlier forecasts and keep comparisons aligned on the same eligible fixtures.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="implementation-title">
+        <h2 id="implementation-title">Engineering Implementation</h2>
+        <div class="section-copy"><p>The reusable Python package separates configuration, canonical-data adaptation, model fitting, chronological replay, scoring, and evidence reporting. Documented contracts define stable fixture identities, permitted information, probability invariants, model snapshots, and explicit failure behavior. Invalid probabilities are rejected rather than silently clipped or normalized.</p><p>Automated synthetic tests check chronology, timezone and cutoff boundaries, analytical derivatives, numerical failures, immutable fitted state, and deterministic evidence handling. A locked environment and recorded code, configuration, dependency, runtime, and input hashes connect an experiment result to the implementation that produced it.</p><p>Create-once evidence, checksums, independent readback, and separately reserved execution attempts protect completed results from overwrite or selective reruns. Public aggregate reports remain distinct from private fixture-level records. Reproducibility means preserving and verifying the authorized evidence, not repeatedly running a frozen validation experiment. The <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/phase6-validation-calibration-operator.md">operator guide</a> documents these boundaries.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="modeling-title">
+        <h2 id="modeling-title">Modeling Decisions</h2>
+        <div class="section-copy"><p>The hierarchical attack–defence Poisson model estimates team scoring rates and converts them into home/draw/away probabilities. The predefined time-decay experiment compared no decay with 730-, 365-, 180-, and 90-day half-lives. Recent matches contribute more to fitting while each evaluation fixture retains equal scoring weight.</p><p>The frozen ranking selected 180 days using the lowest unrounded, fixture-pooled development log loss, with Brier and simplicity reserved for exact ties. Sensitivity remained: leaving out one fold split the winners between 180 and 365 days. This was a bounded development choice, not proof of an optimal half-life or validation success. See the <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/development-backtest-poisson-time-decay-v1.md">time-decay evidence</a>.</p><p>The next comparison held the original 180-day scoring-rate fits fixed and estimated a conditional Dixon–Coles dependence correction. Both candidates produced 1,520 valid forecasts with zero recorded failures, but the correction had worse pooled log loss and Brier score. The reviewed decision retained the uncorrected model.</p><figure class="evidence-graphic" aria-labelledby="football-evidence-caption">
+            <figcaption id="football-evidence-caption">Development log loss · lower is better</figcaption>
+            <dl class="evidence-scores">
+              <div><dt>180-day time-weighted Poisson, uncorrected</dt><dd>0.958539</dd></div>
+              <div><dt>Conditional Dixon–Coles extension</dt><dd>0.960826</dd></div>
+            </dl>
+            <div class="evidence-axis-label">Δ log loss: with − without correction</div>
+            <div class="evidence-plot" aria-hidden="true">
+              <span class="evidence-zero"></span>
+              <span class="evidence-interval" style="left: 54.92002805%; width: 36.05000245%"></span>
+              <span class="evidence-point" style="left: 72.86400407%"></span>
+            </div>
+            <div class="evidence-ticks" aria-hidden="true"><span>−0.005</span><span>0</span><span>+0.005</span></div>
+            <p class="evidence-interpretation">Paired difference <strong>+0.002286</strong>; descriptive 95% interval [<span>+0.000492</span>, <span>+0.004097</span>]. Positive values favor uncorrected Poisson.</p>
+            <p>Training-only development evidence: 1,520 fixtures from four folds within the 2010/11–2018/19 training data. Not official validation or profitability evidence.</p>
+            <div class="evidence-sources"><a href="https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/docs/development-backtest-conditional-dixon-coles-v1.md">Reviewed findings</a><a href="https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/reports/development-backtest-conditional-dixon-coles-v1.json">Aggregate report</a></div>
+          </figure><p>The interval is descriptive: 10,000 bootstrap replicates across 138 operational-week clusters preserve within-week, but not between-week, dependence. The paired difference comes from fixture-level score differences, not rounded display values. This rejects this conditional extension for advancement; it does not establish independence, zero dependence, or universal ineffectiveness of Dixon–Coles. The estimator is not a joint refit of the original Dixon–Coles model.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="results-title">
+        <h2 id="results-title">Results and Limitations</h2>
+        <div class="section-copy"><h3>Development and official validation answer different questions</h3><p>The graphic above records training-only development selection. Earlier <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/validation-poisson-v1.md">official 2024/25 validation of the unweighted Poisson candidate</a> produced 380 valid forecasts with zero diagnostics, but remained worse than Elo/Davidson on both mean log loss and Brier score. Those results belong to that earlier candidate and do not validate the later 180-day choice.</p><h3>Phase 6: completed, with advancement stopped</h3><p>Phase 6 evaluated the frozen 180-day Poisson model without conditional Dixon–Coles. A fixed 7 January 2025 boundary separated prefix temperature fitting from later assessment; the procedure compared raw and temperature-scaled predictions without reopening the model family or decay choice.</p><p><strong>The completed closeout selected raw and recorded it as ineligible for holdout solely because diagnostic certification failed (<code>diagnostics_certifiable</code>).</strong> There is no final calibrator. The preserved accounting is 380 validation fixtures, 181 assessment fixtures, two prefix fits (initial and exact verification), zero final fits, and zero mechanical or orchestration failures.</p><p>Mechanical execution, exact verification, and closeout succeeded. The negative result concerns diagnostic certification; it does not mean the forecasts were invalid or the execution failed, and it is not a formal forecasting-performance classification. The <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/development-plan.md#phase-6-closeout-record">current Phase 6 closeout record</a> governs this status; older phase reports retain their historical authorization language.</p><p>The 2025/26 holdout and 2026/27 prospective data remain untouched and their execution unauthorized. This project makes no claim of successful holdout evaluation, prospective forecasting, superior predictive performance, or betting profitability.</p></div>
+      </section>
+      <section class="case-section section container" aria-labelledby="lessons-title">
+        <h2 id="lessons-title">Engineering and Scientific Lessons</h2>
+        <div class="section-copy"><ul>
+            <li>Predeclare the question, information boundaries, acceptance criteria, and model-selection rules before observing the results.</li>
+            <li>Separate correct execution from scientific acceptance: a verified experiment can produce a negative result that must stop advancement.</li>
+            <li>Keep added complexity only when the permitted evidence supports it. A successfully estimated correction can still be the wrong choice.</li>
+            <li>Preserve provenance and negative evidence. Changing a split, threshold, model, or attempt after seeing an unfavorable result would answer a different question.</li>
+          </ul><p>The contribution is an auditable evaluation process that connects scientific reasoning with dependable software, while respecting the limits of the experiment. <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/development-plan.md">The development plan</a> records decisions and phase gates; the <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/docs/phase6-validation-calibration-operator.md">operator boundary</a> preserves the completed execution history.</p><p>This case study was checked against <a href="https://github.com/jovillal/football-probability-model/blob/410c36c2f6e832c9bc22dc145d5817b5e164a23a/README.md">public research revision 410c36c</a>. The graphic retains its original pinned evidence links. Explore the <a href="https://github.com/jovillal/football-probability-model">public repository</a> for the current documentation; no experiments were rerun or private scientific data accessed to prepare this page.</p></div>
+      </section>
+      <div class="case-return container"><a class="text-link" href="../../">Back to homepage</a></div>
+    </article>
+  </main>
+  <footer class="site-footer container"><span>Jorge Villalobos</span><p>Engineering leadership. Thoughtful architecture.</p><a href="https://github.com/jovillal">GitHub</a></footer>
+</body>
+</html>

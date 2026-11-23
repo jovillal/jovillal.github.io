@@ -787,25 +787,14 @@ h3 {
   border: 0;
 }
 
-.football-evidence {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-  gap: 48px;
-  margin-top: 40px;
-  padding: 32px;
-  border: 1px solid var(--line);
-  background: var(--white);
-}
-
-.football-evidence h3 {
-  font-size: 1.5rem;
-  margin: 0;
-}
-
 .evidence-graphic {
   min-width: 0;
   margin: 0;
   font-size: 1rem;
+}
+
+.case-study .evidence-graphic {
+  margin-block: 32px;
 }
 
 .evidence-scores {
@@ -894,20 +883,9 @@ h3 {
   gap: 8px 20px;
 }
 
-@media(max-width:1000px) {
-  .football-evidence {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-}
-
 @media(max-width:680px) {
   .process-comparison {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .football-evidence {
-    padding: 24px;
   }
 }
 
