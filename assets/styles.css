@@ -118,6 +118,20 @@ main:focus {
   position: relative;
 }
 
+.hero--portrait {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(12rem, 20vw, 18rem);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.hero-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+}
+
 .eyebrow {
   font-size: .75rem;
   font-weight: 700;
@@ -463,6 +477,15 @@ h3 {
 
   .hero {
     padding-block: 58px 64px;
+  }
+
+  .hero--portrait {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hero-portrait {
+    max-width: 10rem;
   }
 
   .hero .eyebrow {
