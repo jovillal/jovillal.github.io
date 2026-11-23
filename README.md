@@ -8,6 +8,8 @@ A bilingual, responsive portfolio built with semantic HTML and shared CSS. No Ja
 - `es/casos/confiabilidad-api/index.html`: Spanish API reliability case study.
 - `case-studies/education-manager/index.html`: English Education Manager case study.
 - `es/casos/education-manager/index.html`: Spanish Education Manager case study.
+- `case-studies/football-probability-model/index.html`: English Football Probability Model case study.
+- `es/casos/football-probability-model/index.html`: Spanish Football Probability Model case study.
 - `assets/styles.css`: shared layout, typography, and responsive styles.
 - `assets/favicon.svg`: local initials favicon.
 - `assets/cv/`: approved English and Spanish PDF resumes, linked from the corresponding contact sections.
@@ -58,7 +60,7 @@ Preserve attribution of the initial implementation to the collaborator. Describe
 
 The API Reliability case study includes a localized before/after process figure. Its ordered steps are qualitative: they do not encode time, incident counts, or universal enforcement. The existing narrative and metrics are unchanged.
 
-A full-width section immediately below the project cards contains the Football Probability Model’s localized paired-difference plot and the two fixture-pooled log losses. Each Football card links to this labeled section. Sources are pinned to public commit `ae063d11a599ac23070a15497c38edebd0859d29` in `jovillal/football-probability-model`:
+The modeling-decisions section of each Football Probability Model case study contains the localized paired-difference plot and the two fixture-pooled log losses. Each homepage Football card links to its language’s case study; detailed research links and the full graphic live on those pages. Sources are pinned to public commit `ae063d11a599ac23070a15497c38edebd0859d29` in `jovillal/football-probability-model`:
 
 - [Reviewed development narrative](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/docs/development-backtest-conditional-dixon-coles-v1.md).
 - [Authoritative aggregate report](https://github.com/jovillal/football-probability-model/blob/ae063d11a599ac23070a15497c38edebd0859d29/reports/development-backtest-conditional-dixon-coles-v1.json), version `development-backtest-conditional-dixon-coles-v1` (Git blob `d68b8a7ae750f58164202690e76d95a352a238dc`).
@@ -74,3 +76,13 @@ Both graphics use static HTML/CSS, existing palette tokens, and no animation. In
 ## Education Manager screenshot
 
 `assets/images/education-manager-workflow.png` is the approved, unmodified Spanish-interface screenshot (1587 × 698). Both Education Manager case studies show the complete image after the introduction with localized captions; both homepages reuse it in a height-limited card preview. Every screenshot is a keyboard-accessible link to the same full-resolution PNG. Responsive images include explicit dimensions and lazy loading. Keep image bytes unchanged and verify screenshot loading, keyboard activation, card balance, and overflow at 1440px, 375px, and 320px.
+
+## Football Probability Model case study
+
+Both case studies follow the shared six-section case-study layout: research question, experimental design, engineering implementation, modeling decisions, results and limitations, and lessons. Direct language links connect the two translations, and header/return links lead to the corresponding homepage. The original development graphic is preserved in the modeling section, including values, interval, pinned source links, and scientific qualifications. Its axis remains descriptive training-only evidence.
+
+The narrative was checked against public research commit `410c36c2f6e832c9bc22dc145d5817b5e164a23a`, using the README, development plan, experiment protocol, decay and conditional Dixon–Coles development reports, earlier Poisson validation report, and Phase 6 operator guide. Narrative source links are pinned to that revision. Earlier phase reports retain historical authorization statements: current Phase 6 status comes from the development-plan closeout record and operator guide.
+
+Phase 6 is complete: raw selected, ineligible for holdout solely for `diagnostics_certifiable`, no final calibrator, and successful mechanical execution and exact verification. Do not confuse this with invalid forecasts, mechanical failure, successful holdout/prospective evaluation, or profitability. No research experiment or private-data access is required for portfolio maintenance.
+
+Check both homepages and new case studies at 1440px, 820px, 375px, and 320px. Verify three homepage cards, the absence of the homepage evidence section, case-study/homepage round trips, direct EN/ES switching, skip links, visible focus, no horizontal overflow, and the graph’s text equivalents and pinned scientific values. Preserve the existing portraits, Education Manager screenshot, API process figure, CVs, and contact links.
